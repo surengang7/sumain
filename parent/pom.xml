@@ -57,6 +57,10 @@
         <!--zxing-->
         <zxing-core.version>3.4.1</zxing-core.version>
         <zxing-javase.version>3.4.1</zxing-javase.version>
+
+        <!--本地依赖包管理-->
+        <sumain-common.version>1.0.0</sumain-common.version>
+        <sumain-feign.version>1.0.0</sumain-feign.version>
     </properties>
 
     <dependencies>
