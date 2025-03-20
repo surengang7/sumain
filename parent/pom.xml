@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sumain</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!--主要框架依赖包-->
+        <java.version>21</java.version>
+        <spring.boot.version>3.2.11</spring.boot.version>
+        <spring.cloud.version>2023.0.1</spring.cloud.version>
+        <nacos.version>2023.0.1.0</nacos.version>
+        <mybatis-plus.version>3.5.9</mybatis-plus.version>
+
+        <!--grpc依赖包-->
+        <protobuf.version>3.21.9</protobuf.version>     <!--todo 版本需要确定-->
+        <grpc.version>3.1.0.RELEASE</grpc.version>
+        <io.grpc.all.version>1.64.0</io.grpc.all.version>
+        <javax.annotation.versoin>1.3.2</javax.annotation.versoin>
+        <com.google.protobuf.protoc.version>3.5.1-1</com.google.protobuf.protoc.version>
+        <io.grpc.protoc.gen.version>1.17.1</io.grpc.protoc.gen.version>
+
+        <!--接口文档工具依赖包-->
+        <knife4j.version>4.3.0</knife4j.version>
+        <springdoc.version>2.6.0</springdoc.version>
+
+        <!--maven编译相关工具依赖包-->
+        <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--常用工具类依赖包-->
+        <lombok.version>1.18.30</lombok.version>
+        <com.alibaba.druid.version>1.2.19</com.alibaba.druid.version>
+        <alibaba.fastjson.version>1.2.78</alibaba.fastjson.version>
+        <hutool.version>5.8.33</hutool.version>
+        <minio.version>8.0.0</minio.version>
+        <amazonaws.version>1.11.821</amazonaws.version>
+        <fileupload.version>1.3.1</fileupload.version>
+        <jpinyin.version>1.1.8</jpinyin.version>
+        <redisson.version>3.26.0</redisson.version>
+        <mapstruct.version>1.6.3</mapstruct.version>
+
+        <!--itextpdf-->
+        <itextpdf.version>5.5.13</itextpdf.version>
+        <itextasian.version>5.2.0</itextasian.version>
+        <itexthtmlpdf.version>2.0.2</itexthtmlpdf.version>
+
+        <!--zxing-->
+        <zxing-core.version>3.4.1</zxing-core.version>
+        <zxing-javase.version>3.4.1</zxing-javase.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${nacos.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>21</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
