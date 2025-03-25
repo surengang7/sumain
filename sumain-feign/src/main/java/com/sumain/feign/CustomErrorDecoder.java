@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sumain.common.entity.ResponseEntity;
 import com.sumain.common.enums.ResponseEnum;
+import com.sumain.common.exceptions.ServerException;
 import feign.FeignException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
@@ -43,6 +44,8 @@ public class CustomErrorDecoder implements ErrorDecoder {
                 // 如果反序列化失败，则返回默认异常
                 return defaultDecoder.decode(methodKey, response);
             }
+        }else if(response.status() == 503){
+            throw new ServerException(" 请稍后重试");
         }
         return defaultDecoder.decode(methodKey, response);
     }
