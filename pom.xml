@@ -13,6 +13,7 @@
         <module>parent</module>
         <module>sumain-common</module>
         <module>sumain-feign</module>
+        <module>sumain-grpc</module>
     </modules>
 
 </project>

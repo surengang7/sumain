@@ -1,7 +1,6 @@
 package com.sumain.common.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sumain.common.enums.ResponseEnum;
 import com.sumain.common.exceptions.GeneralException;
 import lombok.*;
@@ -44,14 +43,4 @@ public class ResponseEntity<T> implements Serializable {
 		responseEntity.setMsg(msg);
 		return responseEntity;
 	}
-
-    @JsonIgnore
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
-
-    @JsonIgnore
-    public boolean isFail() {
-        return !isSuccess();
-    }
 }
