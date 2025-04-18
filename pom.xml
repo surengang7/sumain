@@ -14,6 +14,9 @@
         <module>sumain-common</module>
         <module>sumain-feign</module>
         <module>sumain-grpc</module>
+        <module>sumain-scheduler</module>
+        <module>sumain-cache</module>
+        <module>sumain-mq</module>
     </modules>
 
 </project>
