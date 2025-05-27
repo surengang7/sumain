@@ -17,6 +17,7 @@
         <module>sumain-scheduler</module>
         <module>sumain-cache</module>
         <module>sumain-mq</module>
+        <module>sumain-matching-engine</module>
     </modules>
 
 </project>

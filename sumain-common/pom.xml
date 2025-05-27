@@ -10,7 +10,7 @@
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>suamin-common</artifactId>
+    <artifactId>sumain-common</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
