@@ -34,7 +34,7 @@
 
         <dependency>
             <groupId>com.sumain</groupId>
-            <artifactId>suamin-common</artifactId>
+            <artifactId>sumain-common</artifactId>
             <version>${sumain-common.version}</version>
         </dependency>
 
