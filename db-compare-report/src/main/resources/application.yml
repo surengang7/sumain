@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    source:
+      url: jdbc:oracle:thin:@//source-host:1521/source-db
+      username: source_user
+      password: source_password
+      driver-class-name: oracle.jdbc.OracleDriver
+
+    target:
+      url: jdbc:oracle:thin:@//target-host:1521/target-db
+      username: target_user
+      password: target_password
+      driver-class-name: oracle.jdbc.OracleDriver

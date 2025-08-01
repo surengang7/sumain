@@ -18,6 +18,7 @@
         <module>sumain-cache</module>
         <module>sumain-mq</module>
         <module>sumain-matching-engine</module>
+        <module>db-compare-report</module>
     </modules>
 
 </project>
