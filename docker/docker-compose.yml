@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: PostgreSQL
+    environment:
+      POSTGRES_USER: surengang         # 数据库用户名
+      POSTGRES_PASSWORD: qaz195877 # 数据库密码
+      POSTGRES_DB: surengang             # 默认数据库名
+      TZ: Asia/Shanghai             # 时区
+    ports:
+      - "5432:5432"
+    volumes:
+      - D:\docker\PostgreSQL/data:/var/lib/postgresql/data       # 数据持久化
+      - D:\docker\PostgreSQL/init:/docker-entrypoint-initdb.d
+      - D:\docker\PostgreSQL/logs:/var/log/postgresql
+    command: >
+      postgres
+      -c logging_collector=on
+      -c log_directory=/var/log/postgresql
+      -c log_filename=postgresql-%Y-%m-%d.log
+      -c log_statement=none
+      -c log_timezone=Asia/Shanghai
+      -c timezone=Asia/Shanghai
+      -c client_encoding=UTF8
+      -c max_connections=200
+      -c shared_buffers=256MB
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: surengang
+      RABBITMQ_DEFAULT_PASS: qaz195877
+    volumes:
+      - D:\docker\RabbitMQ/data:/var/lib/rabbitmq
+      - D:\docker\RabbitMQ/log:/var/log/rabbitmq

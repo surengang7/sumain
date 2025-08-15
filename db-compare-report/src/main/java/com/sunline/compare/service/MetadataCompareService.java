@@ -1,4 +1,4 @@
-package com.sumain.compare.service;
+package com.sunline.compare.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

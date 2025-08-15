@@ -19,6 +19,7 @@
         <module>sumain-mq</module>
         <module>sumain-matching-engine</module>
         <module>db-compare-report</module>
+        <module>db-compare-report-dependency</module>
     </modules>
 
 </project>

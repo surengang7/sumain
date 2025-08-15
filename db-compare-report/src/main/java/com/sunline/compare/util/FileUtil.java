@@ -1,4 +1,4 @@
-package com.sumain.compare.util;
+package com.sunline.compare.util;
 
 import com.aggrepoint.utils.JsonUtils;
 import com.csvreader.CsvReader;
