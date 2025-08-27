@@ -9,17 +9,17 @@ import javax.sql.DataSource;
 
 public class TargetDataSourceConfig {
 
-    @Bean
-    @ConfigurationProperties("spring.datasource.target")
-    public DataSourceProperties targetDataSourceProperties() {
-        return new DataSourceProperties();
-    }
-
-    @Bean(name = "targetDataSource")
-    public DataSource targetDataSource() {
-        return targetDataSourceProperties()
-                .initializeDataSourceBuilder()
-                .type(HikariDataSource.class)
-                .build();
-    }
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.target")
+//    public DataSourceProperties targetDataSourceProperties() {
+//        return new DataSourceProperties();
+//    }
+//
+//    @Bean(name = "targetDataSource")
+//    public DataSource targetDataSource() {
+//        return targetDataSourceProperties()
+//                .initializeDataSourceBuilder()
+//                .type(HikariDataSource.class)
+//                .build();
+//    }
 }

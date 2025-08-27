@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML 比较工具</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin-bottom: 10px; }
+        input[type="file"] { display: none; }
+        .file-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #resultTable { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 5px; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 100px;       /* 最大高度 */
+            overflow: hidden;        /* 超出隐藏 */
+            text-overflow: ellipsis; /* 超长显示省略号 */
+        }
+    </style>
+</head>
+<body>
+
+<h2>XML 文件比较</h2>
+
+<div>
+    <label class="file-btn">选择 Source XML
+        <input type="file" id="sourceFile" name="sourceFile">
+    </label>
+    <span id="sourceName"></span>
+</div>
+<div>
+    <label class="file-btn">选择 Target XML
+        <input type="file" id="targetFile" name="targetFile">
+    </label>
+    <span id="targetName"></span>
+</div>
+<br>
+<button id="compareBtn">比较</button>
+
+<h3>比较结果：</h3>
+<table id="resultTable">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Message</th>
+        <th>XPath</th>
+        <th>Source</th>
+        <th>Target</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    const sourceInput = document.getElementById('sourceFile');
+    const targetInput = document.getElementById('targetFile');
+    const sourceName = document.getElementById('sourceName');
+    const targetName = document.getElementById('targetName');
+
+    sourceInput.addEventListener('change', () => {
+        sourceName.textContent = sourceInput.files[0]?.name || '';
+    });
+    targetInput.addEventListener('change', () => {
+        targetName.textContent = targetInput.files[0]?.name || '';
+    });
+
+    // escape HTML 特殊字符
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    document.getElementById('compareBtn').addEventListener('click', () => {
+        if (!sourceInput.files[0] || !targetInput.files[0]) {
+            alert('请先选择两个 XML 文件');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('sourceFile', sourceInput.files[0]);
+        formData.append('targetFile', targetInput.files[0]);
+
+        fetch('/main/xml/compare/upload', { method: 'POST', body: formData })
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.querySelector('#resultTable tbody');
+                tbody.innerHTML = '';
+                if (!Array.isArray(data)) {
+                    alert('返回数据不是数组: ' + JSON.stringify(data));
+                    return;
+                }
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${escapeHtml(item.type)}</td>
+                        <td>${escapeHtml(item.message)}</td>
+                        <td>${escapeHtml(item.xpath)}</td>
+                        <td><pre title="${escapeHtml(item.sourceValue)}">${escapeHtml(item.sourceValue)}</pre></td>
+                        <td><pre title="${escapeHtml(item.targetValue)}">${escapeHtml(item.targetValue)}</pre></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(err => alert('比较失败: ' + err));
+    });
+</script>
+</body>
+</html>

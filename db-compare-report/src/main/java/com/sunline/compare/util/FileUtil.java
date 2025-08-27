@@ -1,10 +1,11 @@
 package com.sunline.compare.util;
 
-import com.aggrepoint.utils.JsonUtils;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import java.io.*;
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -12,7 +13,7 @@ import java.util.*;
 @Slf4j
 public class FileUtil {
 
-
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static String readFile(File file) {
         if (!file.exists()) {
@@ -126,7 +127,8 @@ public class FileUtil {
 
 
     public static String csvToJson(String filePath) throws IOException {
-        return JsonUtils.toJSON(parseCsvToMap(filePath));
+        List<Map<String, String>> list = parseCsvToMap(filePath);
+        return objectMapper.writeValueAsString(list);
     }
 
 
@@ -180,8 +182,45 @@ public class FileUtil {
             List<Map<String, String>> mapList = parseCsvToMap(filePath + fileName);
             dataMap.put(nodeName,mapList);
         });
-        return JsonUtils.toJSON(dataMap);
+        return objectMapper.writeValueAsString(dataMap);
     }
 
+    public static <T> void writeObjectsToCsv(List<T> list, String filePath){
+        if (list == null || list.isEmpty()) {
+            return;
+        }
+        try(OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(filePath), StandardCharsets.UTF_8)) {
+            osw.write('\uFEFF');
+            osw.flush(); // 确保 BOM 写入
+            CsvWriter csvWriter = new CsvWriter(osw, ',');
+            Class<?> clazz = list.get(0).getClass();
+            Field[] fields = clazz.getDeclaredFields();
 
+            // 写表头
+            String[] header = new String[fields.length];
+            for (int i = 0; i < fields.length; i++) {
+                header[i] = fields[i].getName();
+            }
+            csvWriter.writeRecord(header);
+
+            // 写每行数据
+            for (T obj : list) {
+                String[] line = new String[fields.length];
+                for (int i = 0; i < fields.length; i++) {
+                    fields[i].setAccessible(true);
+                    Object value = fields[i].get(obj);
+                    line[i] = value == null ? "" : value.toString();
+                }
+                csvWriter.writeRecord(line);
+            }
+
+            csvWriter.close();
+        } catch (Exception e) {
+            log.error("",e);
+            throw new RuntimeException(e);
+        }
+
+
+
+    }
 }

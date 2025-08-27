@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Big5-HKSCS" ?>
+<admin id = "195877" xxx = "212121">
+    <user id = "123">
+        <id>123</id>
+        <name>粟仁港</name>
+        <age>18</age>
+    </user>
+
+    <user id = "124">
+        <id>124</id>
+        <name>粟情</name>
+        <age>16</age>
+    </user>
+
+    <trade tradeId = "195877">
+        <tradeId>124</tradeId>
+        <type>fx</type>
+        <amount>16</amount>
+        <currency>usd</currency>
+    </trade>
+
+
+</admin>

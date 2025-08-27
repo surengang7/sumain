@@ -10,19 +10,19 @@ import javax.sql.DataSource;
 
 public class SourceDataSourceConfig {
 
-    @Bean
-    @Primary
-    @ConfigurationProperties("spring.datasource.source")
-    public DataSourceProperties sourceDataSourceProperties() {
-        return new DataSourceProperties();
-    }
-
-    @Bean(name = "sourceDataSource")
-    @Primary
-    public DataSource sourceDataSource() {
-        return sourceDataSourceProperties()
-                .initializeDataSourceBuilder()
-                .type(HikariDataSource.class)
-                .build();
-    }
+//    @Bean
+//    @Primary
+//    @ConfigurationProperties("spring.datasource.source")
+//    public DataSourceProperties sourceDataSourceProperties() {
+//        return new DataSourceProperties();
+//    }
+//
+//    @Bean(name = "sourceDataSource")
+//    @Primary
+//    public DataSource sourceDataSource() {
+//        return sourceDataSourceProperties()
+//                .initializeDataSourceBuilder()
+//                .type(HikariDataSource.class)
+//                .build();
+//    }
 }
