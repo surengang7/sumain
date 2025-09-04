@@ -22,9 +22,18 @@
             margin: 0;
             white-space: pre-wrap;
             word-wrap: break-word;
-            max-height: 100px;       /* 最大高度 */
-            overflow: hidden;        /* 超出隐藏 */
-            text-overflow: ellipsis; /* 超长显示省略号 */
+            max-height: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .btn {
+            padding: 6px 12px;
+            margin-top: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -45,7 +54,8 @@
     <span id="targetName"></span>
 </div>
 <br>
-<button id="compareBtn">比较</button>
+<button id="compareBtn" class="btn">比较</button>
+<button id="exportBtn" class="btn">导出 CSV</button>
 
 <h3>比较结果：</h3>
 <table id="resultTable">
@@ -66,6 +76,7 @@
     const targetInput = document.getElementById('targetFile');
     const sourceName = document.getElementById('sourceName');
     const targetName = document.getElementById('targetName');
+    let lastCompareResult = []; // 保存最后一次比较结果
 
     sourceInput.addEventListener('change', () => {
         sourceName.textContent = sourceInput.files[0]?.name || '';
@@ -82,6 +93,31 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+    }
+
+    // 导出 CSV 文件
+    function exportCSV(data) {
+        if (!data || data.length === 0) {
+            alert("没有比较结果可导出");
+            return;
+        }
+
+        let csv = "Type,Message,XPath,Source,Target\n";
+        data.forEach(item => {
+            csv += `"${item.type || ''}","${item.message || ''}","${item.xpath || ''}","${(item.sourceValue || '').replace(/"/g, '""')}","${(item.targetValue || '').replace(/"/g, '""')}"\n`;
+        });
+
+        // ✅ 在最前面加 BOM，避免 Excel 打开乱码
+        const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        // ✅ 用时间戳作为文件名
+        a.download = Date.now() + '_compare_result.csv';
+        a.click();
+
+        URL.revokeObjectURL(url);
     }
 
     document.getElementById('compareBtn').addEventListener('click', () => {
@@ -103,6 +139,7 @@
                     alert('返回数据不是数组: ' + JSON.stringify(data));
                     return;
                 }
+                lastCompareResult = data; // 保存结果
                 data.forEach(item => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
@@ -116,6 +153,10 @@
                 });
             })
             .catch(err => alert('比较失败: ' + err));
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+        exportCSV(lastCompareResult);
     });
 </script>
 </body>
