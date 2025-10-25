@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+xml:
+  compare:
+    scheduling:
+      enable: false
+    path:
+      source: /murex/service/compare/xml/data/source
+      target: /murex/service/compare/xml/data/target
+      source-compared: /murex/service/compare/xml/data/source-compared
+      target-compared: /murex/service/compare/xml/data/target-compared
+      report: /murex/service/compare/xml/data/report
+    xpath:
+      exclude:
+        - /trade/header/time
+        - /trade/header/id
+      include:
+        - /root
+        - /body

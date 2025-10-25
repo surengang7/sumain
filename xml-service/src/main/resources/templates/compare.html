@@ -5,7 +5,7 @@
     <title>XML 比较工具</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: block; margin-bottom: 10px; }
+        label { display: inline-block; margin-bottom: 10px; }
         input[type="file"] { display: none; }
         .file-btn {
             display: inline-block;
@@ -14,6 +14,7 @@
             color: white;
             cursor: pointer;
             border-radius: 4px;
+            margin-right: 8px;
         }
         #resultTable { border-collapse: collapse; width: 100%; margin-top: 20px; }
         th, td { border: 1px solid #ccc; padding: 5px; text-align: left; vertical-align: top; }
@@ -35,12 +36,37 @@
             cursor: pointer;
             border-radius: 4px;
         }
+        h3 { margin-top: 30px; }
+        .path-input {
+            width: 400px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
-<h2>XML 文件比较</h2>
+<h2>XML 文件比较工具</h2>
 
+<!-- 🔹 1. 批量比较（路径输入方式，可选） -->
+<h3>批量比较（输入文件夹路径，可选）</h3>
+<div>
+    <label>Source 文件夹路径:</label>
+    <input type="text" id="sourceDirPath" class="path-input" placeholder="例如: C:/xml/source(注意:服务要可访问到此目录)">
+</div>
+<div>
+    <label>Target 文件夹路径:</label>
+    <input type="text" id="targetDirPath" class="path-input" placeholder="例如: C:/xml/target(注意:服务要可访问到此目录)">
+</div>
+<div>
+    <label>Report 输出目录:</label>
+    <input type="text" id="reportDirPath" class="path-input" placeholder="例如: C:/xml/report(注意:服务要可访问到此目录)">
+</div>
+<br>
+<button id="batchCompareBtn" class="btn">批量比较</button>
+
+<!-- 🔹 2. 单文件比较 -->
+<h3>单文件比较</h3>
 <div>
     <label class="file-btn">选择 Source XML
         <input type="file" id="sourceFile" name="sourceFile">
@@ -54,7 +80,7 @@
     <span id="targetName"></span>
 </div>
 <br>
-<button id="compareBtn" class="btn">比较</button>
+<button id="compareBtn" class="btn">单文件比较</button>
 <button id="exportBtn" class="btn">导出 CSV</button>
 
 <h3>比较结果：</h3>
@@ -76,16 +102,11 @@
     const targetInput = document.getElementById('targetFile');
     const sourceName = document.getElementById('sourceName');
     const targetName = document.getElementById('targetName');
-    let lastCompareResult = []; // 保存最后一次比较结果
+    let lastCompareResult = [];
 
-    sourceInput.addEventListener('change', () => {
-        sourceName.textContent = sourceInput.files[0]?.name || '';
-    });
-    targetInput.addEventListener('change', () => {
-        targetName.textContent = targetInput.files[0]?.name || '';
-    });
+    sourceInput.addEventListener('change', () => sourceName.textContent = sourceInput.files[0]?.name || '');
+    targetInput.addEventListener('change', () => targetName.textContent = targetInput.files[0]?.name || '');
 
-    // escape HTML 特殊字符
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/&/g, "&amp;")
@@ -95,68 +116,87 @@
             .replace(/'/g, "&#039;");
     }
 
-    // 导出 CSV 文件
+    function renderTable(data) {
+        const tbody = document.querySelector('#resultTable tbody');
+        tbody.innerHTML = '';
+        data.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${escapeHtml(item.type)}</td>
+                <td>${escapeHtml(item.message)}</td>
+                <td>${escapeHtml(item.xpath)}</td>
+                <td><pre title="${escapeHtml(item.sourceValue)}">${escapeHtml(item.sourceValue)}</pre></td>
+                <td><pre title="${escapeHtml(item.targetValue)}">${escapeHtml(item.targetValue)}</pre></td>
+            `;
+            tbody.appendChild(tr);
+        });
+        lastCompareResult = data;
+    }
+
     function exportCSV(data) {
         if (!data || data.length === 0) {
             alert("没有比较结果可导出");
             return;
         }
-
         let csv = "Type,Message,XPath,Source,Target\n";
         data.forEach(item => {
             csv += `"${item.type || ''}","${item.message || ''}","${item.xpath || ''}","${(item.sourceValue || '').replace(/"/g, '""')}","${(item.targetValue || '').replace(/"/g, '""')}"\n`;
         });
-
-        // ✅ 在最前面加 BOM，避免 Excel 打开乱码
         const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
-
         const a = document.createElement('a');
         a.href = url;
-        // ✅ 用时间戳作为文件名
         a.download = Date.now() + '_compare_result.csv';
         a.click();
-
         URL.revokeObjectURL(url);
     }
 
+    // 单文件比较
     document.getElementById('compareBtn').addEventListener('click', () => {
         if (!sourceInput.files[0] || !targetInput.files[0]) {
             alert('请先选择两个 XML 文件');
             return;
         }
-
         const formData = new FormData();
         formData.append('sourceFile', sourceInput.files[0]);
         formData.append('targetFile', targetInput.files[0]);
 
         fetch('/main/xml/compare/upload', { method: 'POST', body: formData })
             .then(res => res.json())
-            .then(data => {
-                const tbody = document.querySelector('#resultTable tbody');
-                tbody.innerHTML = '';
-                if (!Array.isArray(data)) {
-                    alert('返回数据不是数组: ' + JSON.stringify(data));
-                    return;
+            .then(result => {
+                if (result.code === 20000) {
+                    renderTable(result.data || []);
+                } else {
+                    alert(result.msg || '比较失败');
                 }
-                lastCompareResult = data; // 保存结果
-                data.forEach(item => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${escapeHtml(item.type)}</td>
-                        <td>${escapeHtml(item.message)}</td>
-                        <td>${escapeHtml(item.xpath)}</td>
-                        <td><pre title="${escapeHtml(item.sourceValue)}">${escapeHtml(item.sourceValue)}</pre></td>
-                        <td><pre title="${escapeHtml(item.targetValue)}">${escapeHtml(item.targetValue)}</pre></td>
-                    `;
-                    tbody.appendChild(tr);
-                });
             })
             .catch(err => alert('比较失败: ' + err));
     });
 
-    document.getElementById('exportBtn').addEventListener('click', () => {
-        exportCSV(lastCompareResult);
+    // 导出 CSV
+    document.getElementById('exportBtn').addEventListener('click', () => exportCSV(lastCompareResult));
+
+    // 批量比较
+    document.getElementById('batchCompareBtn').addEventListener('click', () => {
+        const formData = new FormData();
+        const sourceDirPath = document.getElementById('sourceDirPath').value.trim();
+        const targetDirPath = document.getElementById('targetDirPath').value.trim();
+        const reportDirPath = document.getElementById('reportDirPath').value.trim();
+
+        if (sourceDirPath) formData.append('sourceDir', sourceDirPath);
+        if (targetDirPath) formData.append('targetDir', targetDirPath);
+        if (reportDirPath) formData.append('reportDir', reportDirPath);
+
+        fetch('/main/xml/compare/batch', { method: 'POST', body: formData })
+            .then(res => res.json())
+            .then(result => {
+                if (result.code === 20000) {
+                    alert('批量比较完成' + (result.data || ''));
+                } else {
+                    alert(result.msg || '批量比较失败');
+                }
+            })
+            .catch(err => alert('批量比较失败: ' + err));
     });
 </script>
 </body>

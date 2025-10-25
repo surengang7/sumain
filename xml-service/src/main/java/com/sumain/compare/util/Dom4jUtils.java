@@ -1,7 +1,8 @@
-package com.sunline.compare.util;
+package com.sumain.compare.util;
 
 
-import com.sunline.compare.model.XmlCompareReport;
+import com.sumain.compare.model.GeneralException;
+import com.sumain.compare.model.XmlCompareReport;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.*;
 import org.dom4j.io.SAXReader;
@@ -12,6 +13,9 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class Dom4jUtils {
+
+    public static List<String> excludeXpath = new ArrayList<>(0);
+    public static List<String> includeXpath = new ArrayList<>(0);
 
     public static List<XmlCompareReport> compare(String source,String target){
         Element sourceElement = Dom4jUtils.parseStr(source).getRootElement();
@@ -172,7 +176,7 @@ public class Dom4jUtils {
             return reader.read(file);
         } catch (DocumentException e) {
             log.error("解析xml文件异常",e);
-            throw new RuntimeException(e);
+            throw new GeneralException("解析xml文件异常");
         }
     }
 

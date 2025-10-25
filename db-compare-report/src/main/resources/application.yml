@@ -1,9 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:oracle:thin:@38.60.212.55:1521:helowin
-    username: surengang
-    password: qaz195877
-    driver-class-name: oracle.jdbc.OracleDriver
-
-server:
-  port: 8080

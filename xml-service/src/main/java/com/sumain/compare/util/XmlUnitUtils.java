@@ -1,6 +1,6 @@
-package com.sunline.compare.util;
+package com.sumain.compare.util;
 
-import com.sunline.compare.model.XmlCompareReport;
+import com.sumain.compare.model.XmlCompareReport;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

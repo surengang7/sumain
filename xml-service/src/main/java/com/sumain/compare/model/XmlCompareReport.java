@@ -1,4 +1,4 @@
-package com.sunline.compare.model;
+package com.sumain.compare.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
