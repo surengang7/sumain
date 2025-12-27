@@ -1,0 +1,160 @@
+2025-12-13 20:05:40.877 [main] INFO  [] com.sumain.compare.XmlApplication - Starting XmlApplication using Java 1.8.0_391 on DESK-OMSQTEKWBI with PID 5212 (D:\MyProject\sumain\xml-service\target\classes started by surengang in D:\MyProject\sumain)
+2025-12-13 20:05:40.882 [main] INFO  [] com.sumain.compare.XmlApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-13 20:05:41.743 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-12-13 20:05:41.749 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:05:41.751 [main] INFO  [] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-13 20:05:41.751 [main] INFO  [] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2025-12-13 20:05:41.912 [main] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-13 20:05:41.912 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 978 ms
+2025-12-13 20:05:42.451 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:05:42.484 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-12-13 20:05:42.499 [main] INFO  [] com.sumain.compare.XmlApplication - Started XmlApplication in 2.024 seconds (JVM running for 4.5)
+2025-12-13 20:05:42.503 [main] INFO  [] com.sumain.compare.XmlApplication - xml compare application started success
+2025-12-13 20:06:18.999 [http-nio-8080-exec-1] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-13 20:06:18.999 [http-nio-8080-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-12-13 20:06:19.000 [http-nio-8080-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-12-13 20:18:35.604 [main] INFO  [] com.sumain.compare.XmlApplication - Starting XmlApplication using Java 1.8.0_391 on DESK-OMSQTEKWBI with PID 5780 (D:\MyProject\sumain\xml-service\target\classes started by surengang in D:\MyProject\sumain)
+2025-12-13 20:18:35.607 [main] INFO  [] com.sumain.compare.XmlApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-13 20:18:36.522 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-12-13 20:18:36.528 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:18:36.530 [main] INFO  [] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-13 20:18:36.530 [main] INFO  [] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2025-12-13 20:18:36.676 [main] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-13 20:18:36.676 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1027 ms
+2025-12-13 20:18:37.065 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:18:37.086 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-12-13 20:18:37.096 [main] INFO  [] com.sumain.compare.XmlApplication - Started XmlApplication in 1.874 seconds (JVM running for 2.426)
+2025-12-13 20:18:37.098 [main] INFO  [] com.sumain.compare.XmlApplication - xml compare application started success
+2025-12-13 20:18:40.723 [http-nio-8080-exec-2] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-13 20:18:40.723 [http-nio-8080-exec-2] INFO  [] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-12-13 20:18:40.724 [http-nio-8080-exec-2] INFO  [] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-12-13 20:24:17.574 [main] INFO  [] com.sumain.compare.XmlApplication - Starting XmlApplication using Java 1.8.0_391 on DESK-OMSQTEKWBI with PID 10712 (D:\MyProject\sumain\xml-service\target\classes started by surengang in D:\MyProject\sumain)
+2025-12-13 20:24:17.578 [main] INFO  [] com.sumain.compare.XmlApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-13 20:24:18.343 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-12-13 20:24:18.350 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:24:18.351 [main] INFO  [] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-13 20:24:18.352 [main] INFO  [] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2025-12-13 20:24:18.484 [main] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-13 20:24:18.485 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 863 ms
+2025-12-13 20:24:18.883 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:24:18.904 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-12-13 20:24:18.912 [main] INFO  [] com.sumain.compare.XmlApplication - Started XmlApplication in 1.743 seconds (JVM running for 2.454)
+2025-12-13 20:24:18.914 [main] INFO  [] com.sumain.compare.XmlApplication - xml compare application started success
+2025-12-13 20:24:25.738 [http-nio-8080-exec-1] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-13 20:24:25.738 [http-nio-8080-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-12-13 20:24:25.739 [http-nio-8080-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-12-13 20:25:00.802 [http-nio-8080-exec-3] INFO  [] com.sumain.compare.config.LoggingAspect - ------> MxmlService.compareByUpload,request: [org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@8ef9716, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@22d3eb2a]
+2025-12-13 20:25:00.896 [http-nio-8080-exec-3] INFO  [] com.sumain.compare.config.LoggingAspect - <------ MxmlService.compareByUpload,response: [XmlCompareReport(type=ATTRIBUTE_VALUE, message=属性值不一致, xpath=/*[name()='project']/@xsi:schemaLocation, sourceValue=http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd, targetValue=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd), XmlCompareReport(type=NODE_VALUE, message=节点文本不一致, xpath=/*[name()='project']/*[name()='parent']/*[name()='relativePath'], sourceValue=, targetValue=../parent/pom.xml), XmlCompareReport(type=NODE_VALUE, message=节点文本不一致, xpath=/*[name()='project']/*[name()='parent']/*[name()='groupId'], sourceValue=org.springframework.boot, targetValue=com.sumain), XmlCompareReport(type=NODE_VALUE, message=节点文本不一致, xpath=/*[name()='project']/*[name()='parent']/*[name()='artifactId'], sourceValue=spring-boot-starter-parent, targetValue=parent), XmlCompareReport(type=NODE_VALUE, message=节点文本不一致, xpath=/*[name()='project']/*[name()='parent']/*[name()='version'], sourceValue=2.7.14, targetValue=1.0.0), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='build'], sourceValue=<build xmlns="http://maven.apache.org/POM/4.0.0">
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.14</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>, targetValue=null), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='groupId'], sourceValue=<groupId xmlns="http://maven.apache.org/POM/4.0.0">com.sumain</groupId>, targetValue=null), XmlCompareReport(type=NODE_VALUE, message=节点文本不一致, xpath=/*[name()='project']/*[name()='artifactId'], sourceValue=xml-service, targetValue=sumain-grpc), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='version'], sourceValue=<version xmlns="http://maven.apache.org/POM/4.0.0">1.0.0</version>, targetValue=null), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='properties'], sourceValue=<properties xmlns="http://maven.apache.org/POM/4.0.0">
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>, targetValue=null), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='dependencies'], sourceValue=<dependencies xmlns="http://maven.apache.org/POM/4.0.0">
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.javacsv</groupId>
+            <artifactId>javacsv</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.xmlunit</groupId>
+            <artifactId>xmlunit-core</artifactId>
+            <version>2.10.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+
+    </dependencies>, targetValue=null)]
+2025-12-13 20:29:19.889 [main] INFO  [] com.sumain.compare.XmlApplication - Starting XmlApplication using Java 1.8.0_391 on DESK-OMSQTEKWBI with PID 13292 (D:\MyProject\sumain\xml-service\target\classes started by surengang in D:\MyProject\sumain)
+2025-12-13 20:29:19.892 [main] INFO  [] com.sumain.compare.XmlApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-13 20:29:20.674 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-12-13 20:29:20.681 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:29:20.682 [main] INFO  [] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-13 20:29:20.682 [main] INFO  [] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2025-12-13 20:29:20.820 [main] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-13 20:29:20.821 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 885 ms
+2025-12-13 20:29:21.296 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-13 20:29:21.319 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-12-13 20:29:21.328 [main] INFO  [] com.sumain.compare.XmlApplication - Started XmlApplication in 1.831 seconds (JVM running for 2.387)
+2025-12-13 20:29:21.331 [main] INFO  [] com.sumain.compare.XmlApplication - xml compare application started success
+2025-12-13 20:29:26.481 [http-nio-8080-exec-1] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-13 20:29:26.481 [http-nio-8080-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-12-13 20:29:26.482 [http-nio-8080-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-12-13 20:29:54.667 [http-nio-8080-exec-6] INFO  [] com.sumain.compare.config.LoggingAspect - ------> MxmlService.compareByUpload,request: [org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@227ebbed, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@25224df1]
+2025-12-13 20:29:54.759 [http-nio-8080-exec-6] INFO  [] com.sumain.compare.config.LoggingAspect - <------ MxmlService.compareByUpload,response: [XmlCompareReport(type=ATTRIBUTE, message=target对应节点无此属性, xpath=/*[name()='project']/@xsi:schemaLocation, sourceValue=schemaLocation, targetValue=), XmlCompareReport(type=ATTRIBUTE, message=source对应节点无此属性, xpath=/admin/@id, sourceValue=, targetValue=id), XmlCompareReport(type=ATTRIBUTE, message=source对应节点无此属性, xpath=/admin/@xxx, sourceValue=, targetValue=xxx), XmlCompareReport(type=ATTRIBUTE, message=source对应节点无此属性, xpath=/admin/@yyy, sourceValue=, targetValue=yyy), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='parent'], sourceValue=<parent xmlns="http://maven.apache.org/POM/4.0.0">
+        <groupId>com.sumain</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../parent/pom.xml</relativePath>
+    </parent>, targetValue=null), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='modelVersion'], sourceValue=<modelVersion xmlns="http://maven.apache.org/POM/4.0.0">4.0.0</modelVersion>, targetValue=null), XmlCompareReport(type=NODE, message=target对应节点无此子节点, xpath=/*[name()='project']/*[name()='artifactId'], sourceValue=<artifactId xmlns="http://maven.apache.org/POM/4.0.0">sumain-grpc</artifactId>, targetValue=null), XmlCompareReport(type=NODE, message=source对应节点无此子节点, xpath=/admin/user, sourceValue=null, targetValue=<user id="124">
+        <id>124</id>
+        <name>粟仁添</name>
+        <age>16</age>
+    </user>), XmlCompareReport(type=NODE, message=source对应节点无此子节点, xpath=/admin/user, sourceValue=null, targetValue=<user id="123">
+        <id>123</id>
+        <name>粟仁港</name>
+        <age>18</age>
+    </user>)]
+2025-12-13 20:32:17.420 [main] INFO  [] com.sumain.compare.XmlApplication - Starting XmlApplication using Java 1.8.0_391 on DESK-OMSQTEKWBI with PID 10624 (D:\MyProject\sumain\xml-service\target\classes started by surengang in D:\MyProject\sumain)
+2025-12-13 20:32:17.423 [main] INFO  [] com.sumain.compare.XmlApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-13 20:32:18.214 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9000 (http)
+2025-12-13 20:32:18.223 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9000"]
+2025-12-13 20:32:18.225 [main] INFO  [] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-13 20:32:18.225 [main] INFO  [] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2025-12-13 20:32:18.406 [main] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-13 20:32:18.407 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 942 ms
+2025-12-13 20:32:18.813 [main] INFO  [] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9000"]
+2025-12-13 20:32:18.836 [main] INFO  [] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9000 (http) with context path ''
+2025-12-13 20:32:18.845 [main] INFO  [] com.sumain.compare.XmlApplication - Started XmlApplication in 1.813 seconds (JVM running for 2.328)
+2025-12-13 20:32:18.847 [main] INFO  [] com.sumain.compare.XmlApplication - xml compare application started success
+2025-12-13 20:32:26.707 [http-nio-9000-exec-1] INFO  [] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-13 20:32:26.707 [http-nio-9000-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-12-13 20:32:26.707 [http-nio-9000-exec-1] INFO  [] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms

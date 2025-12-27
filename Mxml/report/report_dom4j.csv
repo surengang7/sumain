@@ -1,0 +1,10 @@
+﻿type,message,xpath,source,target
+ATTRIBUTE_VALUE,属性value不一致,/admin/@xxx,212121,123456
+ATTRIBUTE,source对应节点无此属性,/admin/@yyy,,yyy
+NODE,target对应节点无此子节点,/admin/trade,"<trade tradeId=""195877"">
+        <tradeId>124</tradeId>
+        <type>fx</type>
+        <amount>16</amount>
+        <currency>usd</currency>
+    </trade>",
+NODE_VALUE,节点文本不一致,/admin/user/name,粟情,粟仁添
