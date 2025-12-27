@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sumain</groupId>
-    <artifactId>sumain</artifactId>
+    <groupId>com.su</groupId>
+    <artifactId>su</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -21,6 +21,7 @@
         <module>sumain-security</module>
         <module>sumain-matching-engine</module>
         <module>xml-service</module>
+        <module>su-atlas</module>
     </modules>
 
 </project>

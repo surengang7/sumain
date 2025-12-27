@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.CashSnapshotMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.CashSnapshot">
+    <id column="account_id" property="accountId"/>
+    <result column="ts" property="ts"/>
+    <result column="cash" property="cash"/>
+    <result column="frozen_cash" property="frozenCash"/>
+    <result column="equity" property="equity"/>
+    <result column="drawdown" property="drawdown"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">account_id, ts, cash, frozen_cash, equity, drawdown</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM cash_snapshot
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM cash_snapshot WHERE account_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM cash_snapshot WHERE account_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.CashSnapshot">
+    UPDATE cash_snapshot
+    SET
+      ts = #{ts},
+      cash = #{cash},
+      frozen_cash = #{frozenCash},
+      equity = #{equity},
+      drawdown = #{drawdown}
+    WHERE account_id = #{accountId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.CashSnapshot">
+    INSERT INTO cash_snapshot (
+      account_id,
+      ts,
+      cash,
+      frozen_cash,
+      equity,
+      drawdown
+    ) VALUES (
+      #{accountId},
+      #{ts},
+      #{cash},
+      #{frozenCash},
+      #{equity},
+      #{drawdown}
+    )
+  </insert>
+
+</mapper>

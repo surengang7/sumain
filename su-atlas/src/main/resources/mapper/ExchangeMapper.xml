@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.ExchangeMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.Exchange">
+    <id column="exchange_id" property="exchangeId"/>
+    <result column="exchange_code" property="exchangeCode"/>
+    <result column="exchange_name" property="exchangeName"/>
+    <result column="exchange_timezone" property="exchangeTimezone"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">exchange_id, exchange_code, exchange_name, exchange_timezone, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM exchange
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM exchange WHERE exchange_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM exchange WHERE exchange_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.Exchange">
+    UPDATE exchange
+    SET
+      exchange_code = #{exchangeCode},
+      exchange_name = #{exchangeName},
+      exchange_timezone = #{exchangeTimezone},
+      created_time = #{createdTime}
+    WHERE exchange_id = #{exchangeId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.Exchange">
+    INSERT INTO exchange (
+      exchange_id,
+      exchange_code,
+      exchange_name,
+      exchange_timezone,
+      created_time
+    ) VALUES (
+      #{exchangeId},
+      #{exchangeCode},
+      #{exchangeName},
+      #{exchangeTimezone},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

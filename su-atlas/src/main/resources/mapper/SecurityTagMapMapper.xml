@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.SecurityTagMapMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.SecurityTagMap">
+    <result column="security_id" property="securityId"/>
+    <result column="tag_id" property="tagId"/>
+    <result column="weight" property="weight"/>
+    <result column="effective_from" property="effectiveFrom"/>
+    <result column="effective_to" property="effectiveTo"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">security_id, tag_id, weight, effective_from, effective_to, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM security_tag_map
+  </select>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.SecurityTagMap">
+    INSERT INTO security_tag_map (
+      security_id,
+      tag_id,
+      weight,
+      effective_from,
+      effective_to,
+      created_time
+    ) VALUES (
+      #{securityId},
+      #{tagId},
+      #{weight},
+      #{effectiveFrom},
+      #{effectiveTo},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

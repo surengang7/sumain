@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.SecurityTagMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.SecurityTag">
+    <id column="tag_id" property="tagId"/>
+    <result column="taxonomy" property="taxonomy"/>
+    <result column="tag_type" property="tagType"/>
+    <result column="tag_code" property="tagCode"/>
+    <result column="tag_name" property="tagName"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">tag_id, taxonomy, tag_type, tag_code, tag_name, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM security_tag
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM security_tag WHERE tag_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM security_tag WHERE tag_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.SecurityTag">
+    UPDATE security_tag
+    SET
+      taxonomy = #{taxonomy},
+      tag_type = #{tagType},
+      tag_code = #{tagCode},
+      tag_name = #{tagName},
+      created_time = #{createdTime}
+    WHERE tag_id = #{tagId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.SecurityTag">
+    INSERT INTO security_tag (
+      tag_id,
+      taxonomy,
+      tag_type,
+      tag_code,
+      tag_name,
+      created_time
+    ) VALUES (
+      #{tagId},
+      #{taxonomy},
+      #{tagType},
+      #{tagCode},
+      #{tagName},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

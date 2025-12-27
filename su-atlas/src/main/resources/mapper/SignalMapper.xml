@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.SignalMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.Signal">
+    <id column="signal_id" property="signalId"/>
+    <result column="run_id" property="runId"/>
+    <result column="security_id" property="securityId"/>
+    <result column="ts" property="ts"/>
+    <result column="signal_type" property="signalType"/>
+    <result column="strength" property="strength"/>
+    <result column="price_ref" property="priceRef"/>
+    <result column="reason" property="reason"/>
+    <result column="meta" property="meta"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">signal_id, run_id, security_id, ts, signal_type, strength, price_ref, reason, meta, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM signal
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM signal WHERE signal_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM signal WHERE signal_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.Signal">
+    UPDATE signal
+    SET
+      run_id = #{runId},
+      security_id = #{securityId},
+      ts = #{ts},
+      signal_type = #{signalType},
+      strength = #{strength},
+      price_ref = #{priceRef},
+      reason = #{reason},
+      meta = #{meta},
+      created_time = #{createdTime}
+    WHERE signal_id = #{signalId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.Signal">
+    INSERT INTO signal (
+      signal_id,
+      run_id,
+      security_id,
+      ts,
+      signal_type,
+      strength,
+      price_ref,
+      reason,
+      meta,
+      created_time
+    ) VALUES (
+      #{signalId},
+      #{runId},
+      #{securityId},
+      #{ts},
+      #{signalType},
+      #{strength},
+      #{priceRef},
+      #{reason},
+      #{meta},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

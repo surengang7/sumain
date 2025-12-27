@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.FactorValueMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.FactorValue">
+    <result column="factor_name" property="factorName"/>
+    <id column="security_id" property="securityId"/>
+    <result column="ts" property="ts"/>
+    <result column="value" property="value"/>
+    <result column="calc_version" property="calcVersion"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">factor_name, security_id, ts, value, calc_version, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM factor_value
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM factor_value WHERE security_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM factor_value WHERE security_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.FactorValue">
+    UPDATE factor_value
+    SET
+      factor_name = #{factorName},
+      ts = #{ts},
+      value = #{value},
+      calc_version = #{calcVersion},
+      created_time = #{createdTime}
+    WHERE security_id = #{securityId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.FactorValue">
+    INSERT INTO factor_value (
+      factor_name,
+      security_id,
+      ts,
+      value,
+      calc_version,
+      created_time
+    ) VALUES (
+      #{factorName},
+      #{securityId},
+      #{ts},
+      #{value},
+      #{calcVersion},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

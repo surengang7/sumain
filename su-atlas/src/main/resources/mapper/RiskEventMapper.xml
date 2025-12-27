@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.RiskEventMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.RiskEvent">
+    <id column="event_id" property="eventId"/>
+    <result column="account_id" property="accountId"/>
+    <result column="ts" property="ts"/>
+    <result column="risk_type" property="riskType"/>
+    <result column="detail" property="detail"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">event_id, account_id, ts, risk_type, detail</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM risk_event
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM risk_event WHERE event_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM risk_event WHERE event_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.RiskEvent">
+    UPDATE risk_event
+    SET
+      account_id = #{accountId},
+      ts = #{ts},
+      risk_type = #{riskType},
+      detail = #{detail}
+    WHERE event_id = #{eventId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.RiskEvent">
+    INSERT INTO risk_event (
+      event_id,
+      account_id,
+      ts,
+      risk_type,
+      detail
+    ) VALUES (
+      #{eventId},
+      #{accountId},
+      #{ts},
+      #{riskType},
+      #{detail}
+    )
+  </insert>
+
+</mapper>

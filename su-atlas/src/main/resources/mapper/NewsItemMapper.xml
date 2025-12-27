@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.NewsItemMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.NewsItem">
+    <id column="news_id" property="newsId"/>
+    <result column="source" property="source"/>
+    <result column="source_item_id" property="sourceItemId"/>
+    <result column="url" property="url"/>
+    <result column="title" property="title"/>
+    <result column="digest" property="digest"/>
+    <result column="content_ref" property="contentRef"/>
+    <result column="content_text" property="contentText"/>
+    <result column="publish_time" property="publishTime"/>
+    <result column="fetch_time" property="fetchTime"/>
+    <result column="language" property="language"/>
+    <result column="author" property="author"/>
+    <result column="hash" property="hash"/>
+    <result column="news_type" property="newsType"/>
+    <result column="extra" property="extra"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">news_id, source, source_item_id, url, title, digest, content_ref, content_text, publish_time, fetch_time, language, author, hash, news_type, extra</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM news_item
+  </select>
+
+  <select id="selectById" parameterType="java.util.UUID" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM news_item WHERE news_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.util.UUID">
+    DELETE FROM news_item WHERE news_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.NewsItem">
+    UPDATE news_item
+    SET
+      source = #{source},
+      source_item_id = #{sourceItemId},
+      url = #{url},
+      title = #{title},
+      digest = #{digest},
+      content_ref = #{contentRef},
+      content_text = #{contentText},
+      publish_time = #{publishTime},
+      fetch_time = #{fetchTime},
+      language = #{language},
+      author = #{author},
+      hash = #{hash},
+      news_type = #{newsType},
+      extra = #{extra}
+    WHERE news_id = #{newsId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.NewsItem">
+    INSERT INTO news_item (
+      news_id,
+      source,
+      source_item_id,
+      url,
+      title,
+      digest,
+      content_ref,
+      content_text,
+      publish_time,
+      fetch_time,
+      language,
+      author,
+      hash,
+      news_type,
+      extra
+    ) VALUES (
+      #{newsId},
+      #{source},
+      #{sourceItemId},
+      #{url},
+      #{title},
+      #{digest},
+      #{contentRef},
+      #{contentText},
+      #{publishTime},
+      #{fetchTime},
+      #{language},
+      #{author},
+      #{hash},
+      #{newsType},
+      #{extra}
+    )
+  </insert>
+
+</mapper>

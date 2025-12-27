@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.IngestJobMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.IngestJob">
+    <id column="job_id" property="jobId"/>
+    <result column="source_id" property="sourceId"/>
+    <result column="job_type" property="jobType"/>
+    <result column="schedule_cron" property="scheduleCron"/>
+    <result column="status" property="status"/>
+    <result column="last_run_time" property="lastRunTime"/>
+    <result column="last_success_time" property="lastSuccessTime"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">job_id, source_id, job_type, schedule_cron, status, last_run_time, last_success_time, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM ingest_job
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM ingest_job WHERE job_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM ingest_job WHERE job_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.IngestJob">
+    UPDATE ingest_job
+    SET
+      source_id = #{sourceId},
+      job_type = #{jobType},
+      schedule_cron = #{scheduleCron},
+      status = #{status},
+      last_run_time = #{lastRunTime},
+      last_success_time = #{lastSuccessTime},
+      created_time = #{createdTime}
+    WHERE job_id = #{jobId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.IngestJob">
+    INSERT INTO ingest_job (
+      job_id,
+      source_id,
+      job_type,
+      schedule_cron,
+      status,
+      last_run_time,
+      last_success_time,
+      created_time
+    ) VALUES (
+      #{jobId},
+      #{sourceId},
+      #{jobType},
+      #{scheduleCron},
+      #{status},
+      #{lastRunTime},
+      #{lastSuccessTime},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

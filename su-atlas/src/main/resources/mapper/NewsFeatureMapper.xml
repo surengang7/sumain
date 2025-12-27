@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.NewsFeatureMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.NewsFeature">
+    <id column="news_id" property="newsId"/>
+    <result column="sentiment" property="sentiment"/>
+    <result column="topic" property="topic"/>
+    <result column="importance" property="importance"/>
+    <result column="keywords" property="keywords"/>
+    <result column="model_version" property="modelVersion"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">news_id, sentiment, topic, importance, keywords, model_version, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM news_feature
+  </select>
+
+  <select id="selectById" parameterType="java.util.UUID" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM news_feature WHERE news_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.util.UUID">
+    DELETE FROM news_feature WHERE news_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.NewsFeature">
+    UPDATE news_feature
+    SET
+      sentiment = #{sentiment},
+      topic = #{topic},
+      importance = #{importance},
+      keywords = #{keywords},
+      model_version = #{modelVersion},
+      created_time = #{createdTime}
+    WHERE news_id = #{newsId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.NewsFeature">
+    INSERT INTO news_feature (
+      news_id,
+      sentiment,
+      topic,
+      importance,
+      keywords,
+      model_version,
+      created_time
+    ) VALUES (
+      #{newsId},
+      #{sentiment},
+      #{topic},
+      #{importance},
+      #{keywords},
+      #{modelVersion},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.SecurityMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.Security">
+    <id column="security_id" property="securityId"/>
+    <result column="security_code" property="securityCode"/>
+    <result column="market" property="market"/>
+    <result column="exchange_id" property="exchangeId"/>
+    <result column="security_name" property="securityName"/>
+    <result column="security_name_en" property="securityNameEn"/>
+    <result column="security_type" property="securityType"/>
+    <result column="currency" property="currency"/>
+    <result column="trade_min_size" property="tradeMinSize"/>
+    <result column="listing_date" property="listingDate"/>
+    <result column="delisting_date" property="delistingDate"/>
+    <result column="security_status" property="securityStatus"/>
+    <result column="margin_yn" property="marginYn"/>
+    <result column="created_time" property="createdTime"/>
+    <result column="updated_time" property="updatedTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">security_id, security_code, market, exchange_id, security_name, security_name_en, security_type, currency, trade_min_size, listing_date, delisting_date, security_status, margin_yn, created_time, updated_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM security
+  </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM security WHERE security_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM security WHERE security_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.Security">
+    UPDATE security
+    SET
+      security_code = #{securityCode},
+      market = #{market},
+      exchange_id = #{exchangeId},
+      security_name = #{securityName},
+      security_name_en = #{securityNameEn},
+      security_type = #{securityType},
+      currency = #{currency},
+      trade_min_size = #{tradeMinSize},
+      listing_date = #{listingDate},
+      delisting_date = #{delistingDate},
+      security_status = #{securityStatus},
+      margin_yn = #{marginYn},
+      created_time = #{createdTime},
+      updated_time = #{updatedTime}
+    WHERE security_id = #{securityId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.Security">
+    INSERT INTO security (
+      security_id,
+      security_code,
+      market,
+      exchange_id,
+      security_name,
+      security_name_en,
+      security_type,
+      currency,
+      trade_min_size,
+      listing_date,
+      delisting_date,
+      security_status,
+      margin_yn,
+      created_time,
+      updated_time
+    ) VALUES (
+      #{securityId},
+      #{securityCode},
+      #{market},
+      #{exchangeId},
+      #{securityName},
+      #{securityNameEn},
+      #{securityType},
+      #{currency},
+      #{tradeMinSize},
+      #{listingDate},
+      #{delistingDate},
+      #{securityStatus},
+      #{marginYn},
+      #{createdTime},
+      #{updatedTime}
+    )
+  </insert>
+
+</mapper>

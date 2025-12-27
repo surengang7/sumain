@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.PositionTargetMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.PositionTarget">
+    <result column="run_id" property="runId"/>
+    <result column="ts" property="ts"/>
+    <result column="security_id" property="securityId"/>
+    <result column="target_weight" property="targetWeight"/>
+    <result column="target_shares" property="targetShares"/>
+    <result column="comment" property="comment"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">run_id, ts, security_id, target_weight, target_shares, comment</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM position_target
+  </select>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.PositionTarget">
+    INSERT INTO position_target (
+      run_id,
+      ts,
+      security_id,
+      target_weight,
+      target_shares,
+      comment
+    ) VALUES (
+      #{runId},
+      #{ts},
+      #{securityId},
+      #{targetWeight},
+      #{targetShares},
+      #{comment}
+    )
+  </insert>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.TradingCalendarMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.TradingCalendar">
+    <result column="market" property="market"/>
+    <result column="trade_date" property="tradeDate"/>
+    <result column="is_trading_day" property="isTradingDay"/>
+    <result column="open_time" property="openTime"/>
+    <result column="close_time" property="closeTime"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">market, trade_date, is_trading_day, open_time, close_time, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM trading_calendar
+  </select>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.TradingCalendar">
+    INSERT INTO trading_calendar (
+      market,
+      trade_date,
+      is_trading_day,
+      open_time,
+      close_time,
+      created_time
+    ) VALUES (
+      #{market},
+      #{tradeDate},
+      #{isTradingDay},
+      #{openTime},
+      #{closeTime},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.StrategyRunMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.StrategyRun">
+    <id column="run_id" property="runId"/>
+    <result column="strategy_id" property="strategyId"/>
+    <result column="mode" property="mode"/>
+    <result column="start_time" property="startTime"/>
+    <result column="end_time" property="endTime"/>
+    <result column="params" property="params"/>
+    <result column="data_snapshot" property="dataSnapshot"/>
+    <result column="status" property="status"/>
+    <result column="log_ref" property="logRef"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">run_id, strategy_id, mode, start_time, end_time, params, data_snapshot, status, log_ref, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM strategy_run
+  </select>
+
+  <select id="selectById" parameterType="java.util.UUID" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM strategy_run WHERE run_id = #{id}
+  </select>
+
+  <delete id="deleteById" parameterType="java.util.UUID">
+    DELETE FROM strategy_run WHERE run_id = #{id}
+  </delete>
+
+  <update id="updateById" parameterType="com.su.atlas.entity.StrategyRun">
+    UPDATE strategy_run
+    SET
+      strategy_id = #{strategyId},
+      mode = #{mode},
+      start_time = #{startTime},
+      end_time = #{endTime},
+      params = #{params},
+      data_snapshot = #{dataSnapshot},
+      status = #{status},
+      log_ref = #{logRef},
+      created_time = #{createdTime}
+    WHERE run_id = #{runId}
+  </update>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.StrategyRun">
+    INSERT INTO strategy_run (
+      run_id,
+      strategy_id,
+      mode,
+      start_time,
+      end_time,
+      params,
+      data_snapshot,
+      status,
+      log_ref,
+      created_time
+    ) VALUES (
+      #{runId},
+      #{strategyId},
+      #{mode},
+      #{startTime},
+      #{endTime},
+      #{params},
+      #{dataSnapshot},
+      #{status},
+      #{logRef},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>

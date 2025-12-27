@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.atlas.mapper.NewsDeduplicatMapper">
+
+  <resultMap id="BaseResultMap" type="com.su.atlas.entity.NewsDeduplicat">
+    <result column="source" property="source"/>
+    <result column="source_item_id" property="sourceItemId"/>
+    <result column="news_id" property="newsId"/>
+    <result column="created_time" property="createdTime"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">source, source_item_id, news_id, created_time</sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM news_deduplicat
+  </select>
+
+  <insert id="insert" parameterType="com.su.atlas.entity.NewsDeduplicat">
+    INSERT INTO news_deduplicat (
+      source,
+      source_item_id,
+      news_id,
+      created_time
+    ) VALUES (
+      #{source},
+      #{sourceItemId},
+      #{newsId},
+      #{createdTime}
+    )
+  </insert>
+
+</mapper>
