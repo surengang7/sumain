@@ -2,52 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.su.atlas.mapper.AccountMapper">
 
-  <resultMap id="BaseResultMap" type="com.su.atlas.entity.Account">
-    <id column="account_id" property="accountId"/>
-    <result column="broker" property="broker"/>
-    <result column="mode" property="mode"/>
-    <result column="base_currency" property="baseCurrency"/>
-    <result column="created_time" property="createdTime"/>
-  </resultMap>
 
-  <sql id="Base_Column_List">account_id, broker, mode, base_currency, created_time</sql>
-
-  <select id="selectAll" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List"/> FROM account
-  </select>
-
-  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List"/> FROM account WHERE account_id = #{id}
-  </select>
-
-  <delete id="deleteById" parameterType="java.lang.Long">
-    DELETE FROM account WHERE account_id = #{id}
-  </delete>
-
-  <update id="updateById" parameterType="com.su.atlas.entity.Account">
-    UPDATE account
-    SET
-      broker = #{broker},
-      mode = #{mode},
-      base_currency = #{baseCurrency},
-      created_time = #{createdTime}
-    WHERE account_id = #{accountId}
-  </update>
-
-  <insert id="insert" parameterType="com.su.atlas.entity.Account">
-    INSERT INTO account (
-      account_id,
-      broker,
-      mode,
-      base_currency,
-      created_time
-    ) VALUES (
-      #{accountId},
-      #{broker},
-      #{mode},
-      #{baseCurrency},
-      #{createdTime}
-    )
-  </insert>
 
 </mapper>

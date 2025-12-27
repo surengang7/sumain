@@ -11,31 +11,7 @@ import java.util.List;
 public class DataSourceServiceImpl implements DataSourceService {
 
     @Resource
-    private DataSourceMapper dataSourceMapper;
+    private DataSourceMapper baseMapper;
 
-    @Override
-    public List<DataSource> selectAll() {
-        return dataSourceMapper.selectAll();
-    }
-
-    @Override
-    public DataSource selectById(Long id) {
-        return dataSourceMapper.selectById(id);
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        return dataSourceMapper.deleteById(id) > 0;
-    }
-
-    @Override
-    public boolean updateById(DataSource entity) {
-        return dataSourceMapper.updateById(entity) > 0;
-    }
-
-    @Override
-    public boolean insert(DataSource entity) {
-        return dataSourceMapper.insert(entity) > 0;
-    }
 
 }

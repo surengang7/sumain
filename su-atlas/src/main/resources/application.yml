@@ -1,0 +1,9 @@
+server:
+  port: 8881
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/atlas
+    username: postgres
+    password: your_password
+    driver-class-name: org.postgresql.Driver
+

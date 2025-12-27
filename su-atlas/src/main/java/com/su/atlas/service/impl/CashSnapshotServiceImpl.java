@@ -11,31 +11,7 @@ import java.util.List;
 public class CashSnapshotServiceImpl implements CashSnapshotService {
 
     @Resource
-    private CashSnapshotMapper cashSnapshotMapper;
+    private CashSnapshotMapper baseMapper;
 
-    @Override
-    public List<CashSnapshot> selectAll() {
-        return cashSnapshotMapper.selectAll();
-    }
-
-    @Override
-    public CashSnapshot selectById(Long id) {
-        return cashSnapshotMapper.selectById(id);
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        return cashSnapshotMapper.deleteById(id) > 0;
-    }
-
-    @Override
-    public boolean updateById(CashSnapshot entity) {
-        return cashSnapshotMapper.updateById(entity) > 0;
-    }
-
-    @Override
-    public boolean insert(CashSnapshot entity) {
-        return cashSnapshotMapper.insert(entity) > 0;
-    }
 
 }

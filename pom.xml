@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>parent</module>
+        <module>su-parent</module>
         <module>sumain-common</module>
         <module>sumain-feign</module>
         <module>sumain-grpc</module>

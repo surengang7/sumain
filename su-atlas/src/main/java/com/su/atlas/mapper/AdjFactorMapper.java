@@ -1,21 +1,13 @@
 package com.su.atlas.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.su.atlas.entity.AdjFactor;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
+
 
 @Mapper
-public interface AdjFactorMapper {
+public interface AdjFactorMapper extends BaseMapper<AdjFactor> {
 
-    List<AdjFactor> selectAll();
 
-    AdjFactor selectById(@Param("id") Long id);
-
-    int deleteById(@Param("id") Long id);
-
-    int updateById(AdjFactor entity);
-
-    int insert(AdjFactor entity);
 
 }

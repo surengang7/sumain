@@ -2,46 +2,4 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.su.atlas.mapper.PositionSnapshotMapper">
 
-  <resultMap id="BaseResultMap" type="com.su.atlas.entity.PositionSnapshot">
-    <result column="account_id" property="accountId"/>
-    <result column="ts" property="ts"/>
-    <result column="security_id" property="securityId"/>
-    <result column="qty" property="qty"/>
-    <result column="avg_cost" property="avgCost"/>
-    <result column="market_price" property="marketPrice"/>
-    <result column="market_value" property="marketValue"/>
-    <result column="unrealized_pnl" property="unrealizedPnl"/>
-    <result column="realized_pnl" property="realizedPnl"/>
-  </resultMap>
-
-  <sql id="Base_Column_List">account_id, ts, security_id, qty, avg_cost, market_price, market_value, unrealized_pnl, realized_pnl</sql>
-
-  <select id="selectAll" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List"/> FROM position_snapshot
-  </select>
-
-  <insert id="insert" parameterType="com.su.atlas.entity.PositionSnapshot">
-    INSERT INTO position_snapshot (
-      account_id,
-      ts,
-      security_id,
-      qty,
-      avg_cost,
-      market_price,
-      market_value,
-      unrealized_pnl,
-      realized_pnl
-    ) VALUES (
-      #{accountId},
-      #{ts},
-      #{securityId},
-      #{qty},
-      #{avgCost},
-      #{marketPrice},
-      #{marketValue},
-      #{unrealizedPnl},
-      #{realizedPnl}
-    )
-  </insert>
-
 </mapper>

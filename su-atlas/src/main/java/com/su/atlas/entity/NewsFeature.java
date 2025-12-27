@@ -24,7 +24,7 @@ public class NewsFeature implements Serializable {
 
     /** 资讯ID */
     @TableField("news_id")
-    private UUID newsId;
+    private String newsId;
 
     /** 情绪分值（-1~1，可空） */
     @TableField("sentiment")

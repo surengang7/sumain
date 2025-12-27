@@ -4,15 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.su</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>su-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <properties>
         <!--主要框架依赖包-->
         <java.version>21</java.version>
-        <spring.boot.version>3.2.11</spring.boot.version>
+        <spring.boot.version>3.2.4</spring.boot.version>
         <spring.cloud.version>2023.0.1</spring.cloud.version>
         <nacos.version>2023.0.1.0</nacos.version>
         <mybatis-plus.version>3.5.9</mybatis-plus.version>
@@ -26,7 +33,7 @@
         <io.grpc.protoc.gen.version>1.17.1</io.grpc.protoc.gen.version>
 
         <!--接口文档工具依赖包-->
-        <knife4j.version>4.3.0</knife4j.version>
+        <knife4j.version>4.5.0</knife4j.version>
         <springdoc.version>2.6.0</springdoc.version>
 
         <!--maven编译相关工具依赖包-->
@@ -100,6 +107,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
