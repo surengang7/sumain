@@ -12,4 +12,8 @@ public class ExchangeServiceImpl implements ExchangeService {
     private ExchangeMapper baseMapper;
 
 
+    @Override
+    public void init() {
+
+    }
 }

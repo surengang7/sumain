@@ -1,5 +1,9 @@
 package com.su.atlas.controller;
 
+import com.su.atlas.view.ResponseEntity;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
@@ -13,6 +17,12 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 @RequestMapping("/atlas/ingestJob")
+@Tag(name = "数据采集")
 public class IngestJobController {
 
+    @PutMapping("/exchange")
+    @Operation(summary = "交易所",description = "交易所数据采集")
+    public ResponseEntity<String> ingestExchangeInfo(){
+        return ResponseEntity.ok();
+    }
 }

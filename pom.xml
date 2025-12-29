@@ -11,17 +11,17 @@
 
     <modules>
         <module>su-parent</module>
-        <module>sumain-common</module>
-        <module>sumain-feign</module>
-        <module>sumain-grpc</module>
-        <module>sumain-scheduler</module>
-        <module>sumain-cache</module>
-        <module>sumain-mq</module>
-        <module>sumain-message</module>
-        <module>sumain-security</module>
-        <module>sumain-matching-engine</module>
-        <module>xml-service</module>
+        <module>su-common</module>
+        <module>su-feign</module>
+        <module>su-grpc</module>
+        <module>su-scheduler</module>
+        <module>su-cache</module>
+        <module>su-mq</module>
+        <module>su-message</module>
+        <module>su-security</module>
+        <module>su-matching-engine</module>
         <module>su-atlas</module>
+        <module>xml-service</module>
     </modules>
 
 </project>

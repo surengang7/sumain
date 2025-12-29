@@ -55,6 +55,7 @@
         <jpinyin.version>1.1.8</jpinyin.version>
         <redisson.version>3.26.0</redisson.version>
         <mapstruct.version>1.6.3</mapstruct.version>
+        <easy-excel.version>3.3.4</easy-excel.version>
 
         <!--itextpdf-->
         <itextpdf.version>5.5.13</itextpdf.version>
@@ -66,8 +67,7 @@
         <zxing-javase.version>3.4.1</zxing-javase.version>
 
         <!--本地依赖包管理-->
-        <sumain-common.version>1.0.0</sumain-common.version>
-        <sumain-feign.version>1.0.0</sumain-feign.version>
+        <su-common.version>1.0.0</su-common.version>
     </properties>
 
     <dependencies>
@@ -112,6 +112,12 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.su</groupId>
+                <artifactId>su-common</artifactId>
+                <version>${su-common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
