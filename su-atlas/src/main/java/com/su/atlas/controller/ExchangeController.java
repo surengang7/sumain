@@ -2,6 +2,7 @@ package com.su.atlas.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Controller;
  * @author surengang
  * @since 2025-12-27
  */
-@Controller
+@RestController
 @RequestMapping("/atlas/exchange")
 public class ExchangeController {
+
 
 }

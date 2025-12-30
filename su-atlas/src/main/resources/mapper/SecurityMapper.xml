@@ -2,4 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.su.atlas.mapper.SecurityMapper">
 
+    <insert id="batchUpsertByMarketCode">
+        INSERT INTO security (
+            security_id,
+            security_code,
+            market,
+            exchange_id,
+            security_name,
+            security_name_en,
+            security_type,
+            currency,
+            trade_min_size,
+            listing_date,
+            delisting_date,
+            security_status,
+            margin_yn
+        )
+        VALUES
+        <foreach collection="list" item="s" separator=",">
+            (
+            #{s.securityId},
+            #{s.securityCode},
+            #{s.market},
+            #{s.exchangeId},
+            #{s.securityName},
+            #{s.securityNameEn},
+            #{s.securityType},
+            #{s.currency},
+            #{s.tradeMinSize},
+            #{s.listingDate},
+            #{s.delistingDate},
+            #{s.securityStatus},
+            #{s.marginYn}
+            )
+        </foreach>
+        ON CONFLICT (market, security_code)
+        DO UPDATE SET
+            exchange_id      = EXCLUDED.exchange_id,
+            security_name    = EXCLUDED.security_name,
+            security_name_en = EXCLUDED.security_name_en,
+            security_type    = EXCLUDED.security_type,
+            currency         = EXCLUDED.currency,
+            trade_min_size   = EXCLUDED.trade_min_size,
+            listing_date     = EXCLUDED.listing_date,
+            delisting_date   = EXCLUDED.delisting_date,
+            security_status  = EXCLUDED.security_status,
+            margin_yn        = EXCLUDED.margin_yn,
+            updated_time     = now()
+    </insert>
 </mapper>

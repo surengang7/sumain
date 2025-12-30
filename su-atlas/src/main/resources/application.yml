@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://127.0.0.1:5432/atlas
-    username: postgres
-    password: your_password
+    username: surengang
+    password: qaz195877
     driver-class-name: org.postgresql.Driver
 

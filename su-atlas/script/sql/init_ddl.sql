@@ -5,12 +5,13 @@
 
 -- 1) Master Data
 CREATE TABLE exchange (
-                          exchange_id  BIGSERIAL PRIMARY KEY,
-                          exchange_code         text NOT NULL UNIQUE,
-                          exchange_name         text NOT NULL,
-                          exchange_timezone     TEXT NOT NULL DEFAULT 'Asia/Shanghai',
-                          created_time   TIMESTAMPTZ NOT NULL DEFAULT now()
+    exchange_id  bigint PRIMARY KEY,
+    exchange_code         text NOT NULL UNIQUE,
+    exchange_name         text NOT NULL,
+    exchange_timezone     TEXT NOT NULL DEFAULT 'Asia/Shanghai',
+    created_time   timestamp time NOT NULL DEFAULT now()
 );
+
 
 COMMENT ON TABLE exchange IS '交易所/市场定义';
 COMMENT ON COLUMN exchange.exchange_id IS '主键';
@@ -20,22 +21,22 @@ COMMENT ON COLUMN exchange.exchange_timezone IS '交易所时区';
 COMMENT ON COLUMN exchange.created_time IS '创建时间';
 
 CREATE TABLE security (
-                          security_id    BIGSERIAL PRIMARY KEY,
-                          security_code  TEXT NOT NULL,
-                          market         TEXT NOT NULL,
-                          exchange_id    BIGINT NOT NULL REFERENCES exchange(exchange_id),
-                          security_name  TEXT NOT NULL,
-                          security_name_en    TEXT,
-                          security_type       TEXT NOT NULL,               -- STOCK/ETF/INDEX...
-                          currency       TEXT NOT NULL DEFAULT 'CNY',
-                          trade_min_size       INT  NOT NULL DEFAULT 100,
-                          listing_date      DATE,
-                          delisting_date    DATE,
-                          security_status         TEXT NOT NULL DEFAULT 'LISTED', -- LISTED/SUSPENDED/DELISTED...
-                          margin_yn  BOOLEAN,
-                          created_time     TIMESTAMPTZ NOT NULL DEFAULT now(),
-                          updated_time     TIMESTAMPTZ NOT NULL DEFAULT now(),
-                          UNIQUE (market, security_code)
+    security_id    bigint PRIMARY KEY,
+    security_code  TEXT NOT NULL,
+    market         TEXT NOT NULL,
+    exchange_id    BIGINT NOT NULL REFERENCES exchange(exchange_id),
+    security_name  TEXT NOT NULL,
+    security_name_en    TEXT,
+    security_type       TEXT NOT NULL,               -- STOCK/ETF/INDEX...
+    currency       TEXT NOT NULL DEFAULT 'CNY',
+    trade_min_size       INT  NOT NULL DEFAULT 100,
+    listing_date      DATE,
+    delisting_date    DATE,
+    security_status         TEXT NOT NULL DEFAULT 'LISTED', -- LISTED/SUSPENDED/DELISTED...
+    margin_yn  BOOLEAN,
+    created_time     timestamp NOT NULL DEFAULT now(),
+    updated_time     timestamp NOT NULL DEFAULT now(),
+    UNIQUE (market, security_code)
 );
 
 COMMENT ON TABLE security IS '证券主表（股票/ETF/指数等统一抽象）';

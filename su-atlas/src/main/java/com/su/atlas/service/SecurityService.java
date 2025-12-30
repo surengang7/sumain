@@ -1,14 +1,17 @@
 package com.su.atlas.service;
 
 
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+
+
+import com.su.atlas.entity.Security;
+
+import java.util.List;
 
 public interface SecurityService {
 
 
 
-    void saveFromExcel(MultipartFile file) throws IOException;
+    void saveBatch(List<Security> securityList,Boolean updateYn,int batchSize);
 
 }
